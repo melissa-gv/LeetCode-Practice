@@ -29,8 +29,6 @@ const lowestCommonAncestor = (root, p, q) => {
   // set min to be the smallest of P & Q; set max
   const minVal = Math.min(p.val, q.val)
   const maxVal = Math.max(p.val, q.val)
-  console.log(minVal)
-  console.log(maxVal);
   let curNode = root;
   while (curNode) {
     if (curNode.val >= minVal && curNode.val <= maxVal) return curNode;
@@ -43,6 +41,7 @@ const lowestCommonAncestor = (root, p, q) => {
   }
   return undefined;
 };
+// q: how to set remote upstream git repo?
 
 // Test Case 1
 // const root = [6, 2, 8, 0, 4, 7, 9, null, null, 3, 5];

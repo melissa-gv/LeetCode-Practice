@@ -4,36 +4,39 @@
  * @return {boolean}
  */
 var isPalindrome = function (s) {
-  const regex = /([^A-Z0-9])/gi;
-  let sMod = s.replaceAll(regex, "").toLowerCase();
+  let sMod = s.replace(/[^A-Za-z0-9]/g, "").toLowerCase();
+  let i = 0;
+  let j = sMod.length - 1;
 
-  console.log("sMod", sMod);
-  let stack = [];
-
-  for (let i = 0; i < sMod.length; i++) {
-    if (sMod.length % 2 === 1 && i === Math.floor(sMod.length / 2)) {
-      console.log("continue", sMod[i]);
-      console.log("sMod[i + 1]", sMod[i + 1], stack[stack.length - 1]);
-      continue;
-    } else if (i < sMod.length / 2) {
-      stack.push(sMod[i]);
-      console.log("pushed stack:", stack);
-    } else if (sMod[i] === stack[stack.length - 1]) {
-      console.log("here");
-      stack.pop();
-      console.log("popped stack:", stack);
+  while (i < j) {
+    if (sMod[i] === sMod[j]) {
+      i++;
+      j--;
     } else {
       return false;
     }
   }
-  console.log("stack:", stack);
-  return stack.length === 0 ? true : false;
+  return true;
 };
 
-let str1 = "mom";
-let str2 = "deed";
-let str3 = "deeds";
-let str4 = "A man, a plan, a canal: Panama";
+let str1 = "mom"; // T
+let str2 = "deed";// T
+let str3 = "deeds";// F
+let str4 = "A man, a plan, a canal: Panama"; // T
+let str5 = "0P"; // F
 
-let test = isPalindrome(str3);
+
+let test = isPalindrome(str1);
 console.log(test);
+
+let test2 = isPalindrome(str2);
+console.log(test2);
+
+let test3 = isPalindrome(str3);
+console.log(test3);
+
+let test4 = isPalindrome(str4);
+console.log(test4);
+
+let test5 = isPalindrome(str5);
+console.log(test5);
