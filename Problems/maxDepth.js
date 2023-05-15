@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 class TreeNode {
   constructor(val, left, right) {
     this.val = (val===undefined ? 0 : val)
